@@ -1,9 +1,12 @@
 {
+  "homepage": "https://amudanthangavel.github.io/kitefurn-dev",
   "name": "razzle-examples-with-react-router",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "razzle start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "razzle build",
     "export": "razzle export",
     "test": "razzle test --env=jsdom",
@@ -28,6 +31,7 @@
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "razzle": "3.3.4",
     "serve": "^11.3.0"
   }
