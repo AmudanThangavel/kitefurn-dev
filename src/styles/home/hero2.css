@@ -2,6 +2,7 @@
     height: 630px;
     display: flex;
     background-color: #8da5a2;
+    text-align: left;
 }
 
 .hero2-A{
@@ -75,21 +76,23 @@
 }
 
 .btn-stairs{
-    padding: 5px 30px!important;
-    font-size: 25px!important;
     font-weight: 500;
-    margin-top: 10px;
-    border-radius: 5px!important;
-    background-color: #5e9bc7!important;
-    border: none!important;
+    border: none;
+    padding: 3px 30px!important;
+    font-size: 30px!important;
+    font-weight: 500;
+    border-radius: 50px!important;
     color: #ffffff!important;
+    background-color: #8da5a2!important;
+    margin-top: 2%;
     transition: all 0.4s;
 }
 
 .btn-stairs:hover{
-    background-color: #4a7197!important;
-    color: #e4dcd4;
+    background-color: #ffffff!important;
+    color: #147d76!important;
     transition: all 0.4s;
+    border: #546866!important;
 }
 
 .resp-show{
@@ -107,6 +110,8 @@
 .resp-show2{
     display: none;
 }
+
+
 
 .bed-text-container{
     position: absolute;
@@ -149,8 +154,10 @@
 }
 
 .btn-bed:hover{
-    color: #1d837c!important;
+    color:#ffffff!important;
     transition: all 0.4s;
+    border-color: #679f99;
+    background-color: #679f99!important;
 }
 
 .bed-text-content{
@@ -163,6 +170,7 @@
     bottom: 50px;
     text-align: left;
     font-weight: 400;
+    text-align: left !important;
 }
 
 .bed-lowlight{
@@ -373,7 +381,7 @@
     }
 
     .btn-bed{
-        margin-top: 25px;
+        margin-top: 4%;
     }
 
 }

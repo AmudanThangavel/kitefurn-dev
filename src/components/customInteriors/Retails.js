@@ -9,7 +9,7 @@ import '../../styles/customInteriors/retails.css';
 
 const content = {
     subTitle: 'Maximize Customer Flow',
-    subtext: 'We smartly design retail store layouts. Designs which assists walk-ins and converts walk-ins to sales. Even a minimal budget, when used wisely, can bring out your store\’s full potential.',
+    subtext: 'We smartly design retail store layouts. Designs which assists walk-ins and converts walk-ins to sales. Even a minimal budget, when used wisely, can bring out your store’s full potential.',
     imgA: {
         alt: 'Shops and retail layout design is our specialty.',
         front: 'We also create exterior appeal by styling of a retail outlet such as this one.'

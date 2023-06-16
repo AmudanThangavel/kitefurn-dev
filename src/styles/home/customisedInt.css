@@ -13,7 +13,8 @@
     width: 35%;
     height: 100%;
     padding-top: 0px;
-    padding-left: 30px;
+    padding-left: 130px;
+    
 }
 
 .custom-grid{
@@ -183,8 +184,9 @@
     }
 
     .custom-head{
-        width: 100%;
+        width: 50%;
         padding-top: 15px;
+        padding-left: 30px;
     }
 
     .customisedInt-base{
@@ -251,6 +253,7 @@
 
     .custom-title{
         font-size: 60px!important;
+        text-align: justify;
     }
 
     .custom-subtag{
@@ -304,7 +307,7 @@
     }
 
     .custom-head{
-        width: 100%;
+        width: 50%;
         padding-top: 15px;
         padding-bottom: 20px;
     }
@@ -382,6 +385,7 @@
     }
 
     .custom-head{
+        width: 100%;
         padding-bottom: 0;
     }
 
@@ -425,6 +429,7 @@
     }
 
     .custom-head{
+        width: 100%;
         padding-left: 20px;
         padding-right: 20px;
         text-align: center;

@@ -16,9 +16,12 @@
 }
 
 .glassStairsB {
+  padding-top: 100px !important;
   width: auto;
   min-width: 45%;
   padding: 20px 0;
+  justify-content: center;
+  align-items: center;
   text-align: right;
 }
 
@@ -178,7 +181,7 @@
   }
 
   .glassStairsB {
-    padding-top: 0;
+    padding-top: 0 !important;
     padding-right: 13px;
     position: relative;
   }

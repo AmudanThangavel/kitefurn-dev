@@ -26,10 +26,11 @@ const content = {
     }
 }
 
+
 class Hero2 extends Component{
     render(){
         return(
-            <div className="fluid-container hero2-base">
+            <div className="fluid-container hero2-base" >
                 <div className="hero2-A">
                     <img src={stairs} className="img-stairs" alt={content.imgA.alt[0]} />
                     <img src={stairs2} className="img-stairs stairDisp" alt={content.imgA.alt[1]} />

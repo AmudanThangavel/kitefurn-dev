@@ -1,4 +1,4 @@
-import { Route, Switch} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React from 'react';
 import Favicon from "react-favicon";
 
@@ -7,7 +7,7 @@ import Home from "./components/home";
 import ResidenceInteriors from "./components/residenceInteriors"
 import ModularKitchens from "./components/modularKitchens"
 import CustomInteriors from "./components/customInteriors"
-
+import NavigationBar from './NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/fonts.css';
 import "./App.css";
@@ -17,28 +17,29 @@ import favIconImage from "./media/branding/logoIcon.png";
 const App = () => {
   return (
     <div className="fluid-container text-center">
+      <div>
+      <NavigationBar />
+      {/* Your other components and content */}
+      
+    </div>
       <Favicon url={favIconImage} />
       
-      <Header />
+      {/* <Header /> */}
 
       <div className="fluid-container globalContainer">
-        <Switch>
-          <Route path="/residenceInteriors">
-            <ResidenceInteriors/>
+        <Routes>
+          <Route path="/residenceInteriors" element={<ResidenceInteriors/>}>
           </Route>
 
-          <Route path="/modularKitchens">
-            <ModularKitchens/>
+          <Route path="/modularKitchens" element={<ModularKitchens/>}>
           </Route>
 
-          <Route path="/customInteriors">
-            <CustomInteriors/>
+          <Route path="/customInteriors" element={<CustomInteriors/>}>
           </Route>
 
-          <Route exact path="/">
-            <Home/>
+          <Route path="/" element={<Home/>}>
           </Route>
-        </Switch>
+        </Routes>
       </div>
     </div>
   );

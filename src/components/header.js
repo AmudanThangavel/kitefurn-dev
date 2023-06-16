@@ -1,6 +1,6 @@
-import React, { Component, createRef } from 'react';
+import React, {Component, createRef} from 'react';
 import { CSSTransition } from "react-transition-group";
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 import dropArrow from '../media/icons/icons8-triangle-arrow-96.png';
@@ -34,12 +34,10 @@ const content = {
   }
 }
 
-
-
-class Header extends Component {
-  render() {
-    return (
-      <div className="header-container">
+class Header extends Component{
+    render(){
+      return(
+        <div className="header-container">
         <div className="site-header">
           <div className="col-head-box header-padding">
             {/* Logo */}
@@ -66,7 +64,7 @@ class Header extends Component {
               <div className="phn-container-1" >
                 <PhoneButton employeeName="Prabhu" employeeNumber="8940401793" alt={content.phB.alt} className="mx-2-5 call-btn-pad call-btn-A" />
               </div>
-              <a href="https://goo.gl/maps/u4nzcxS5XatMFXyA7" target="_blank">
+              <a href="https://goo.gl/maps/u4nzcxS5XatMFXyA7" target="_blank" rel="noopener noreferrer">
                 <button className="header-button-base map-button">
                   <img src={mapIcon} alt={content.map.alt} className="map-icon hover-shake" />
                 </button>
@@ -79,13 +77,13 @@ class Header extends Component {
           <div className="hr-line mx-5-ish" />
         </div>
       </div>
-    );
-  }
+      );
+    }
 }
 
 
-class NavMenu extends Component {
-  constructor(props) {
+class NavMenu extends Component{
+  constructor(props){
     super(props);
     this.classNameList = [
       "mx-2-5 btn-nav header-button-base",
@@ -93,57 +91,85 @@ class NavMenu extends Component {
       "mx-2-5 btn-nav header-button-base"
     ]
     this.state = {
-      baseClassList: "mx-2-5 btn-nav header-button-base",
+      baseClassList:"mx-2-5 btn-nav header-button-base",
       classnameslist: this.classNameList,
     }
 
     this.pathsList = [
       "/",
-      "/residenceInteriors",
+      "/customInteriors",
       "/modularKitchens"
     ]
 
   }
 
   navSwitch = (index) => {
-    var i = 0;
+    var i=0;
     this.classNameList[index] += " btn-nav-target";
-    for (; i < this.classNameList.length; i++) {
-      if (i !== index) {
+    for(;i<this.classNameList.length;i++){
+      if(i !== index){
         this.classNameList[i] = this.state.baseClassList;
       }
     }
-    this.setState({ classnameslist: this.classNameList });
+    this.setState({classnameslist: this.classNameList});
   }
 
-  componentDidUpdate() {
-    let index = this.pathsList.indexOf(this.props.location.pathname);
-    if (index === this.currentIndex)
+  componentDidUpdate(){
+    console.log(window.location.href)
+    console.log(this.pathsList)
+
+    let index;
+    if(window.location.href.indexOf("/customInteriors/#residence") !== -1){
+      index = 1;
+    } else if(window.location.href.indexOf("/customInteriors") !== -1){
+      // do nothing
+    } else if(window.location.href.indexOf("/modularKitchens") !== -1){
+      index = 2;
+    } else {
+      index = 0;
+    }
+
+    // let index = this.pathsList.indexOf(this.props.location.pathname);
+    if(index === this.currentIndex)
       return
 
     this.currentIndex = index;
     this.navSwitch(index);
   }
 
-  componentDidMount() {
-    let index = this.pathsList.indexOf(this.props.location.pathname);
-    if (index === this.currentIndex)
+  componentDidMount(){
+    console.log(window.location.href)
+    console.log(this.pathsList)
+
+    let index;
+    if(window.location.href.indexOf("/customInteriors/#residence") !== -1){
+      index = 1;
+    } else if(window.location.href.indexOf("/customInteriors") !== -1){
+      // do nothing
+    } else if(window.location.href.indexOf("/modularKitchens") !== -1){
+      index = 2;
+    } else {
+      index = 0;
+    }
+
+    // let index = this.pathsList.indexOf(this.props.location.pathname);
+    if(index === this.currentIndex)
       return
 
     this.currentIndex = index;
     this.navSwitch(index);
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <span>
         <Link to="/" className="resp-block">
           <button className={this.state.classnameslist[0]} onClick={() => this.navSwitch(0)}>
-            <img className="top-btn-img-home" src={homeIcon} alt={content.home.alt} />
+            <img className="top-btn-img-home" src={homeIcon} alt={content.home.alt}/>
           </button>
-        </Link>
+        </Link>  
 
-        <a href="/customInteriors/#residence" className="resp-block">
+        <a href="/customInteriors/#residence" className="resp-block" id="res-nav-btn-id">
           <button className={this.state.classnameslist[1]} onClick={() => this.navSwitch(1)}>
             Residence Interiors
           </button>
@@ -158,10 +184,11 @@ class NavMenu extends Component {
     );
   }
 }
-const WrappedNav = withRouter(NavMenu);
+// const WrappedNav = withRouter(NavMenu);
+const WrappedNav = NavMenu;
 
-class CollapsibleMenu extends Component {
-  constructor(props) {
+class CollapsibleMenu extends Component{
+  constructor(props){
     super(props);
     this.state = {
       toggleClass: "coll-nav-container",
@@ -173,22 +200,22 @@ class CollapsibleMenu extends Component {
   }
 
 
-  componentDidMount() {
-    window.addEventListener("click", (event) => {
-      if (this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)) {
-        this.setState({ inProp: false });
+  componentDidMount(){
+    window.addEventListener("click",(event)=>{
+      if(this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)){
+        this.setState({inProp: false});
       }
     });
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <span className="coll-nav">
-        <button ref={this.wrapperRef} className="header-button-base menu-button" onClick={() => { this.setState({ inProp: !this.state.inProp }); }}>
-          <img src={menuIcon} alt={content.menu.alt} className="map-icon hover-shake" />
+        <button ref={this.wrapperRef} className="header-button-base menu-button" onClick={()=>{this.setState({inProp: !this.state.inProp});}}>
+          <img src={menuIcon} alt={content.menu.alt} className="map-icon hover-shake"/>
         </button>
         <CSSTransition
-          in={this.state.inProp}
+          in = {this.state.inProp}
           timeout={50}
           unmountOnExit
           classNames="coll-menu-drop"
@@ -198,11 +225,11 @@ class CollapsibleMenu extends Component {
               <div className="menu-title">
                 Menu
               </div>
-              <div className="menu-title menu-close" onClick={() => { this.setState({ inProp: false }); }}>X</div>
+              <div className="menu-title menu-close" onClick={()=>{this.setState({inProp: false});}}>X</div>
             </div>
-            <WrappedNav />
+            <WrappedNav/>
             <CustomMenu className="mx-2-5 header-button-base hover-flip resp-block">
-              Customized Interiors<img className="top-btn-arrow" src={dropArrow} alt={content.arrow.alt} />
+              Customized Interiors<img className="top-btn-arrow" src={dropArrow} alt={content.arrow.alt}/> 
             </CustomMenu>
           </div>
         </CSSTransition>
@@ -211,8 +238,8 @@ class CollapsibleMenu extends Component {
   }
 }
 
-class CustomMenu extends Component {
-  constructor(props) {
+class CustomMenu extends Component{
+  constructor(props){
     super(props);
     this.state = {
       inProp: false,
@@ -223,33 +250,42 @@ class CustomMenu extends Component {
   }
 
 
-  componentDidMount() {
-    window.addEventListener("click", (event) => {
-      if (this.wrapperRef.current && !this.wrapperRef.current.contains(event.target)) {
-        this.setState({
-          inProp: false,
-          classNames: (this.props.location && this.props.location.pathname == "/customInteriors") ? (this.props.className + " btn-nav-active") : (this.props.className + " btn-nav-inactive")
-        });
-      }
-    });
-  }
+  // componentDidMount() {
+  //   window.addEventListener("click", this.handleClickOutside);
+  // }
+  
+  // componentWillUnmount() {
+  //   window.removeEventListener("click", this.handleClickOutside);
+  // }
+  
+  // handleClickOutside = (event) => {
+  //   if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+  //     this.setState({
+  //       inProp: false,
+  //       classNames: (this.props.location?.pathname === "/customInteriors") ? (this.props.className + " btn-nav-active") : (this.props.className + " btn-nav-inactive")
+  //     });
+  //   }
+  // }
 
-  switchIn = () => {
+
+  
+
+  switchIn = ()=>{
     this.setState({
       inProp: !this.state.inProp,
-      classNames: (this.state.inProp ? this.props.className + " btn-nav-inactive" : this.props.className + " btn-nav-active")
+      classNames: (this.state.inProp ? this.props.className+" btn-nav-inactive" : this.props.className+" btn-nav-active")
     });
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <span className="dropdown-container" ref={this.wrapperRef}>
         <button className={this.state.classNames} onClick={this.switchIn}>
           {this.props.children}
         </button>
 
         <CSSTransition
-          in={this.state.inProp}
+          in = {this.state.inProp}
           timeout={500}
           unmountOnExit
           classNames="menu-drop"
@@ -258,27 +294,27 @@ class CustomMenu extends Component {
           <div className="menu-drop-internal text-center">
             <div className="menu-drop-buttons-container">
               <a href="/customInteriors/#hotels">
-                <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>Hotel Interiors</button>
+                <button className="btn btn-light btn-sub-nav" onClick={()=>{this.setState({inProp: false});}}>Hotel Interiors</button>
               </a>
 
               <a href="/customInteriors/#eateries">
-                <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>Bakeries</button>
+                <button className="btn btn-light btn-sub-nav" onClick={()=>{this.setState({inProp: false});}}>Bakeries</button>
               </a>
-
+              
               <a href="/customInteriors/#retails">
-                <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>Departmentals Stores</button>
+                <button className="btn btn-light btn-sub-nav" onClick={()=>{this.setState({inProp: false});}}>Departmentals Stores</button>
               </a>
-
-              <a href="/customInteriors/#halls">
-                <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>Banquet &#38; Meeting Halls</button>
+              
+              <a href="/customInteriors/#halls">  
+                <button className="btn btn-light btn-sub-nav" onClick={()=>{this.setState({inProp: false});}}>Banquet &#38; Meeting Halls</button>
               </a>
 
               <a href="/customInteriors/#offices">
                 <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>Offices</button>
               </a>
-
-              <Link to="/customInteriors">
-                <button className="btn btn-light btn-sub-nav" onClick={() => { this.setState({ inProp: false }); }}>View More</button>
+              
+              <Link to="/customInteriors">  
+                <button className="btn btn-light btn-sub-nav" onClick={()=>{this.setState({inProp: false});}}>View More</button>
               </Link>
             </div>
           </div>
@@ -289,6 +325,7 @@ class CustomMenu extends Component {
   }
 }
 
-const CollapsibleCustomMenu = withRouter(CustomMenu);
+// const CollapsibleCustomMenu = withRouter(CustomMenu);
+const CollapsibleCustomMenu = CustomMenu;
 
 export default Header;

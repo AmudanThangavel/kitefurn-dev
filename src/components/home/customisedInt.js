@@ -37,7 +37,7 @@ class CustomisedInt extends Component{
     render(){
         return(
             <div className="fluid-container customisedInt-base text-left">
-                <div className="custom-head">
+                <div className="custom-head " >
                     <div className="custom-title">
                         <div>Designed &#38;</div>
                         <div>Built for <span className="highlight">You</span></div>

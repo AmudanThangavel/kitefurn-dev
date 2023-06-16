@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import imgA from '../../media/images/residenceInteriors/glassStairs/A.jpg';
 import imgB from '../../media/images/residenceInteriors/glassStairs/B.jpg';

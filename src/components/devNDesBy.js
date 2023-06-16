@@ -2,13 +2,10 @@ import React, {Component} from 'react';
 import '../styles/devNDes.css';
 
 class DevSection extends Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         return(
             <div className="fluid-container dev-base text-center" style={{...this.props.styling}}>
-                <a target="_blank" href="https://www.linkedin.com/in/prithivi-maruthachalam-3b8196179/" className="dev-text">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/prithivi-maruthachalam-3b8196179/" className="dev-text">
                     a <span>Prithivi Maruthachalam</span> production
                 </a>
             </div>
